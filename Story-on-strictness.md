@@ -82,14 +82,14 @@ maintain original semantics as much as possible, just changing what was really n
 # Builder contract
 
 It's all about meaning of `adding element to the set` operation.
-For some reason, most languages and libraries (please point me at some language that
-does it different way) assume this is algebraic set union. But for me this is wrong;
+Most languages and libraries (please point me at some language that does it different way)
+assume this is algebraic set union. But for me this is wrong;
 if I write `a.add(x)` I want X to become part of `a`. If this is impossible for some reason
 (set already contains `a`) - I'd expect failure to be reported.
 
 Note we already have tools to do it in convenient way:
 ```scala
-Set.empty[Int] ++ Seq(1,2,3,1,1).distinct
+Set.from(Seq(1,2,3,1,1).distinct)
 ```
 
 I believe this can be implemented so that no unnecessary distinction check happens.

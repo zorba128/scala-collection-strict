@@ -6,7 +6,7 @@ and evaluate alternative approach.
 
 ## Explanation
 
-[Story](Story-on-strictness.md) document tries to explain the reasoning behind whole idea.
+[Story](Story-on-strictness.md) document tries to explain the idea.
 
 ## Usage
 
@@ -15,7 +15,6 @@ For now only immutable variants are provided.
 
 - `StrictSet`
 - `StrictMap`
-- `StrictMapSet`
 
 See [Api](Api.md) for short summary of what is in there.
 
