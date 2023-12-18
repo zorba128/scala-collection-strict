@@ -84,8 +84,8 @@ maintain original semantics as much as possible, just changing what was really n
 It's all about meaning of `adding element to the set` operation.
 Most languages and libraries (please point me at some language that does it different way)
 assume this is algebraic set union. But for me this is wrong;
-if I write `a.add(x)` I want X to become part of `a`. If this is impossible for some reason
-(set already contains `a`) - I'd expect failure to be reported.
+if I write `a.add(x)` I want `x` to become part of `a`. If this is impossible for some reason
+(set already contains `x`) - I'd expect failure to be reported.
 
 Note we already have tools to do it in convenient way:
 ```scala
@@ -95,6 +95,12 @@ Set.from(Seq(1,2,3,1,1).distinct)
 I believe this can be implemented so that no unnecessary distinction check happens.
 
 Maybe the name of collection might be `DistinctCollection` - `Collection not allowing duplicates to be added`.
+
+# Bounded collections
+
+Maybe this is a bit more generic problem of supporting runtime-bounded collections.
+It's like trying to implement `SizeBoundedList`, that disallows more than `limit` elements to be added.
+`Set` then becomes collection that enforces bound on elements being distinct.
 
 # Final words
 
