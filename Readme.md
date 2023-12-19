@@ -6,7 +6,11 @@ and evaluate alternative approach.
 
 ## Explanation
 
-Proposal is to make `Set` and `Map` builders throw exception on duplicates
+Proposal is to change `Set` and `Map` interpretation - rather than
+focusing on set algebra, make it behave like **constrained collection
+of distinct elements**.
+
+This leads to builders throwing exception on duplicates
 rather dropping them silently.
 We all are used to current behavior (it's been there since java 1.0)
 but maybe its high time to at least discuss if this was the best choice.
