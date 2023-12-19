@@ -94,6 +94,12 @@ final class StrictMap[K, V] private(elems: Map[K, V])
   override def newSpecificBuilder: StrictMapBuilder[K, V] = StrictMap.newBuilder[K, V]
 
   override protected def fromSpecific(coll: IterableOnce[(K, V)]): StrictMap[K, V] = StrictMap.from(coll)
+
+  override def keySet: StrictSet[K] = StrictSet.from(elems.keySet)
+
+  override def valueSet: StrictSet[V] = keySet.map(elems)
+
+  override def valuesIterator: Iterator[V] = elems.valuesIterator
 }
 
 trait StrictMapOps[K, V, +CC[X, Y] <: StrictMapOps[X, Y, CC, _], +C <: StrictMapOps[K, V, CC, C]]
@@ -128,6 +134,12 @@ trait StrictMapOps[K, V, +CC[X, Y] <: StrictMapOps[X, Y, CC, _], +C <: StrictMap
    *         `f` to each element of this $coll and collecting the results.
    */
   def map[K2, V2](f: ((K, V)) => (K2, V2)): CC[K2, V2]
+
+  def keySet: StrictSet[K]
+
+  def valueSet: StrictSet[V]
+
+  def valuesIterator: Iterator[V]
 }
 
 object StrictMap extends MapFactory[StrictMap] {
