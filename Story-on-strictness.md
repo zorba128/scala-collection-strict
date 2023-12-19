@@ -70,11 +70,14 @@ Note *set/map cannot store same element/key twice* can be rendered into
 - *adding element to set that already contains that element is impossible and results in exception*
 - *adding entry with key that already exists in map is impossible and results in exception*
 
+This changes interpretation of `Set` and `Map` structures. `Set` becomes *constrained collection
+that enforces uniques in therms of equality of elements it stores*.
+
 Of course, we still need possibility to safely include elements in sets regardless of their existence,
 to union sets dropping duplicates, to update map entries for new value. Core point is
 `Set.add(e)` is different operation than `Set.incl(e)`. And default behavior should be the first 
-one, because its specification is strict, keeping other one for situations where user 
-explicitly calls for it.
+one, because its specification is strict, it fits into collection system nicely,
+keeping other one for situations where user explicitly calls for it.
 
 Project provides proposal of `StrictSet` and `StrictMap` collections that follow that idea.
 Note `StrictSet` cannot implement `Set` interface, and `StrictMap` cannot implement `Map`

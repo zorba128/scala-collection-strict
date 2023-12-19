@@ -44,7 +44,7 @@ So one way is to make sure interfaces is generic enough to handle both
 and let implementers decide how `add` works).
 
 Or maybe introduce more generic building block - have something like
-`trait Distinct[T] extends Iterable[T]` that would mark inputs that have uniqueness
+`trait DistinctIterable[T] extends Iterable[T]` that would mark inputs that have uniqueness
 guarantee. Note it could fit to many places, like `Seq.distinct`. 
 
 
